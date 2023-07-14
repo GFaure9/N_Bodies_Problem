@@ -23,7 +23,7 @@ Click the play button to watch a demonstration of the project:
 ## Installation
 To install this project, clone the repository using the following command:
 ```
-git clone repository_name
+git clone https://github.com/GFaure9/N_Bodies_Problem.git
 ```
 Navigate to the project directory in a terminal and run the following command to install the required dependencies:
 ```
