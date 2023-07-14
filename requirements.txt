@@ -1,0 +1,10 @@
+numpy
+pyvista
+matplotlib
+imageio
+imageio[ffmpeg]
+imageio[pyav]
+colour
+pyyaml
+colorlog
+tqdm
