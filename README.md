@@ -12,7 +12,7 @@ This project aims to solve an N-body problem, where given masses are subjected t
 Further description of the equations and the resolution method can be found at [docs/N_bodies_problem.pdf](docs/N_bodies_problem.pdf).
 
 ## Demo
-Click the play button to watch a demonstration of the project:
+Click the image below to download a demonstration of the project:
 
 <p align="center">
 <a href=outputs/default_movie.mp4>
@@ -25,7 +25,11 @@ To install this project, clone the repository using the following command:
 ```
 git clone https://github.com/GFaure9/N_Bodies_Problem.git
 ```
-Navigate to the project directory in a terminal and run the following command to install the required dependencies:
+Navigate to the project directory in a terminal (`cd path_to_project`) and run the following command to install the required dependencies:
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
+
+## Usage
+
+TO BE COMPLETED
