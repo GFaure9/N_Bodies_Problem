@@ -32,8 +32,8 @@ pip install -r requirements.txt
 
 ## Usage
 
-To use the package, first create the configuration you want by writing it in the [data/config.yaml](data/config.yaml)
-file or check for the existing configurations.
+To use the library, first create the configuration you want by writing it in the [data/config.yaml](data/config.yaml)
+file or check for already existing configurations.
 ````commandline
 # Example of a configuration
 
