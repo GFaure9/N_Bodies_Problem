@@ -3,7 +3,33 @@ default:
   dt : 0.5  # default time step
   T : 5000  # default time duration  (50000)
   m : 10000  # default mass
+# If you want to choose different masses, comment the definition of m above and specify the
+# masses for each body (as in the example below).
+#  m:
+#    - [10000]
+#    - [40000]
+#    - [70000]
+#    - [5000]
+#    - [10500]
+#    - [10030]
+#    - [1200]
+#    - [10500]
+#    - [2000]
+#    - [15000]
   G : 6.67428e-11  # gravitational constant
   init_method: "random"  # y0 initialization method
   solve_method: "euler"  # solver update method
+
+different_masses:
+  N : 4
+  dt : 0.5
+  T : 10000
+  m:
+    - [10000]
+    - [30000]
+    - [15000]
+    - [18000]
+  G : 6.67428e-11
+  init_method: "random"
+  solve_method: "euler"
 
