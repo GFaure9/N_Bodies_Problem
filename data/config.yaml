@@ -21,7 +21,7 @@ default:
   solve_method: "euler"  # solver update method
 
 different_masses:
-  N : 4
+  N : 7
   dt : 0.5
   T : 10000
   m:
@@ -29,6 +29,22 @@ different_masses:
     - [30000]
     - [15000]
     - [18000]
+    - [5000]
+    - [8000]
+    - [22000]
+  G : 6.67428e-11
+  init_method: "random"
+  solve_method: "euler"
+
+three_body:
+  N : 4
+  dt : 0.1
+  T : 10000
+  m:
+    - [100000]
+    - [100000]
+    - [100000]
+    - [50000]
   G : 6.67428e-11
   init_method: "random"
   solve_method: "euler"

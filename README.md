@@ -22,14 +22,41 @@ Click the image below to download a demonstration of the project:
 
 ## Installation
 To install this project, clone the repository using the following command:
-```
+```commandline
 git clone https://github.com/GFaure9/N_Bodies_Problem.git
 ```
 Navigate to the project directory in a terminal (`cd path_to_project`) and run the following command to install the required dependencies:
-```
+```commandline
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-TO BE COMPLETED
+To use the package, first create the configuration you want by writing it in the [data/config.yaml](data/config.yaml)
+file or check for the existing configurations.
+````commandline
+# Example of a configuration
+
+three_body:
+  N : 4
+  dt : 0.1
+  T : 10000
+  m:
+    - [100000]
+    - [100000]
+    - [100000]
+    - [50000]
+  G : 6.67428e-11
+  init_method: "random"
+  solve_method: "euler"
+````
+
+Then in a Python file, run the following commands:
+````commandline
+from lib.animate import SolveAnim
+
+solver_anim = SolveAnim(config="name_of_your_config", movie_path="path_for_the_output_movie")
+solution = solver_anim.solve()
+solver_anim.animation()
+````
+The output movie will be created at the path you gave in argument.

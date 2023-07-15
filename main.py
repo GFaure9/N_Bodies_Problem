@@ -3,7 +3,7 @@ from lib.animate import SolveAnim
 
 def main():
     solver_anim = SolveAnim(
-        config="default",  # different_masses
+        config="different_masses",  # default    different_masses     three_body
         movie_path="outputs/default_movie.mp4"
     )
     solution = solver_anim.solve()
