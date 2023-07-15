@@ -5,5 +5,5 @@ default:
   m : 10000  # default mass
   G : 6.67428e-11  # gravitational constant
   init_method: "random"  # y0 initialization method
-  solve_method: "euler"  # y0 initialization method
+  solve_method: "euler"  # solver update method
 

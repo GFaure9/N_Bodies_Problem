@@ -9,11 +9,19 @@ from lib.vectors import Solve
 
 
 class SolveAnim(Solve):
+    """
+    Main class to animate the solution of the N-body problem.
+    """
     def __init__(self, movie_path: str = "outputs/test.mp4", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.pth = movie_path
 
     def animation(self):
+        """
+        Create a movie of the N bodies movement from the resolution of positions/velocities.
+        The movie is saved at self.pth.
+        :return: None
+        """
         log.info("Starting creating a movie to visualize solution...")
 
         if self.ys is not None:
@@ -57,7 +65,7 @@ class SolveAnim(Solve):
         # Be sure to close the plotter when finished
         p.close()
 
-        log.info(f"Finished creating movie ! Movie created at: {self.pth}")
+        log.info(f"Finished creating movie! Movie created at: {self.pth}")
 
 
 log = logger

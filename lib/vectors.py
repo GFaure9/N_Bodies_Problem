@@ -1,11 +1,15 @@
 import yaml
 import numpy as np
 
+from typing import List
 from tqdm import tqdm
 from lib.utils import logger
 
 
 class Solve:
+    """
+    Main class to solve the N-body problem.
+    """
     def __init__(self, config: str = "default"):
         with open("data/config.yaml", 'r') as file:
             cfgs = yaml.safe_load(file)
@@ -13,13 +17,27 @@ class Solve:
         self.m_vec = np.ones((self.cfg["N"], 1)) * self.cfg["m"]
         self.ys = None  # solutions (positions at each time step)
 
-    def y_0(self, method: str):
+    def y_0(self, method: str) -> np.ndarray:
+        """
+        Initialize the solution of the problem. With N positions and N velocities.
+        For the "random" method, the positions are chosen randomly in the unit cube, and
+        the velocities are all set to 0.
+        :param method: str : name of the method of initialization.
+        :return: np.ndarray : a vector containing initial positions and velocities.
+        """
         N = self.cfg["N"]
         if method == "random":
             return np.row_stack((np.random.random((N, 3)), np.zeros((N, 3))))
-        log.info("Finished initialization of positions and velocities !")
+        log.info("Finished initialization of positions and velocities!")
 
-    def f(self, i, r: np.ndarray):
+    def f(self, i: int, r: np.ndarray):
+        """
+        Compute the function:
+        f_i = sum{j=1 to N with j != i}( G * m_j * (r_j - r_i)/|r_j - r_i| ** 2 )
+        :param i: int : number of the body.
+        :param r: np.ndarray : positions of the N bodies.
+        :return: float : f_i.
+        """
         mm = np.delete(self.m_vec, i, 0)
         rr = np.delete(r, i, 0)
         rr -= r[i]
@@ -28,21 +46,43 @@ class Solve:
         to_sum = self.cfg["G"] * mm * rr / divide
         return np.sum(to_sum, axis=0)
 
-    def f_vec(self, y: np.ndarray):
+    def f_vec(self, y: np.ndarray) -> np.ndarray:
+        """
+        Return the vector made of all f_i.
+        :param y: np.ndarray : (positions, velocities) array.
+        :return: np.ndarray : (f_1, f_2, ..., f_N).
+        """
         n = int(len(y)/2)
         r = y[:n]
         ff = np.array([self.f(i, r) for i in range(n)])
         return ff
 
     def g(self, y: np.ndarray) -> np.ndarray:
+        """
+        Return g = (positions, f_vec)
+        :param y: np.ndarray : (positions, velocities) array.
+        :return: np.ndarray : g.
+        """
         n = int(len(y)/2)
         return np.row_stack((y[n:], self.f_vec(y)))
 
     def y_k1(self, y_k0: np.ndarray, method: str) -> np.ndarray:
+        """
+        Compute and return y_k1 = h(y_k0) (update of the positions/velocities array) at
+        time step k+1 using solution at time step k.
+        :param y_k0: np.ndarray : (positions, velocities) at time step k.
+        :param method: str : name of method of update ("euler" = Euler's explicit method
+        for instance).
+        :return:
+        """
         if method == "euler":
             return y_k0 + self.cfg["dt"] * self.g(y_k0)
 
-    def solve(self):
+    def solve(self) -> List[np.ndarray]:
+        """
+        Run the resolution of the N-body problem.
+        :return: List[np.ndarray] : y the list of solutions at each time step.
+        """
         log.info(f"The configuration for this resolution is: {self.cfg}")
 
         init, solv = self.cfg["init_method"], self.cfg["solve_method"]
@@ -60,7 +100,7 @@ class Solve:
         progress_bar.close()
 
         self.ys = y
-        log.info("Finished initialization of positions and velocities !")
+        log.info("Finished resolution!")
 
         return y
 
