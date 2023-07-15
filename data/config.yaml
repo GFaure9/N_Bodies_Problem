@@ -49,3 +49,16 @@ three_body:
   init_method: "random"
   solve_method: "euler"
 
+one_for_all:
+  N : 4
+  dt : 0.1
+  T : 10000
+  m:
+    - [100000]
+    - [50000]
+    - [50000]
+    - [50000]
+  G : 6.67428e-11
+  init_method: "random"
+  solve_method: "euler"
+

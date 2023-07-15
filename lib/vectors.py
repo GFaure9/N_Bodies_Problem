@@ -27,8 +27,9 @@ class Solve:
         """
         N = self.cfg["N"]
         if method == "random":
-            return np.row_stack((np.random.random((N, 3)), np.zeros((N, 3))))
-        log.info("Finished initialization of positions and velocities!")
+            init_vec = np.row_stack((np.random.random((N, 3)), np.zeros((N, 3))))
+            log.info("Finished initialization of positions and velocities!")
+            return init_vec
 
     def f(self, i: int, r: np.ndarray):
         """
