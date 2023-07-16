@@ -42,7 +42,7 @@ class Solve:
         mm = np.delete(self.m_vec, i, 0)
         rr = np.delete(r, i, 0)
         rr -= r[i]
-        divide = np.linalg.norm(rr, axis=1) ** 2
+        divide = np.linalg.norm(rr, axis=1) ** 2  # TODO: change to **3 (otherwise, incorrect)
         divide = np.array([divide.tolist()]).transpose()
         to_sum = self.cfg["G"] * mm * rr / divide
         return np.sum(to_sum, axis=0)

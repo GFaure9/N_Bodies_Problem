@@ -1,8 +1,8 @@
 default:
   N : 10  # default number of bodies
   dt : 0.5  # default time step
-  T : 5000  # default time duration  (50000)
-  m : 10000  # default mass
+  T : 50000  # default time duration  (50000)
+  m : 10000  # default mass (10000)
 # If you want to choose different masses, comment the definition of m above and specify the
 # masses for each body (as in the example below).
 #  m:
@@ -58,6 +58,15 @@ one_for_all:
     - [50000]
     - [50000]
     - [50000]
+  G : 6.67428e-11
+  init_method: "random"
+  solve_method: "euler"
+
+three:
+  N : 3
+  dt : 0.5
+  T : 10000
+  m: 10000
   G : 6.67428e-11
   init_method: "random"
   solve_method: "euler"

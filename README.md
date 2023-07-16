@@ -1,6 +1,10 @@
 # N-Body Problem Solver
 
-This project aims to solve an N-body problem, where given masses are subjected to gravitational force. The method for solving such a problem can be found on the following [Wikipedia page](https://en.wikipedia.org/wiki/N-body_problem).
+This project aims to solve an N-body problem, where given masses are subjected to gravitational force 
+(see [Wikipedia page](https://en.wikipedia.org/wiki/N-body_problem) for more information on the problem). 
+The method used to solve such a problem can be found in the chapter 4 of Kjartan Kari Gardasson Myrdal's
+[Bachelor Thesis](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=4780668&fileOId=4780676)
+__Some Theoretical and Numerical Aspects of the N-Body Problem__ (2013).
 
 *"No, emptiness is not nothingness. Emptiness is a form of existence. You must utilize this existential emptiness to fill yourself."*  
 - The Three-Body Problem, Liu Cixin
